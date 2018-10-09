@@ -11,14 +11,17 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
 	MediaPalace media = new MediaPalace();
+	JFrame frame = new JFrame("The Magic Box contains many secrets...");
 	/*
 	 * Work together as a TEAM of 2 or 3 to make this project. We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
@@ -53,13 +56,14 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	}
 
 	private void createUI() {
-		JFrame frame = new JFrame("The Magic Box contains many secrets...");
+		
 		frame.add(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.addMouseListener(this);
+		
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -79,14 +83,31 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (backgroundImage.getRGB(e.getX(), e.getY())==-2837131) {
-			media.speak("why you  bully me");
+		if (e.getX()>43&&e.getX()<102&&e.getY()>74&&e.getY()<118) {
+			media.speak("did you just click me?");
 		}
-	System.out.println(e.getX());
-	System.out.println(e.getY());
-		System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
 		
-	}
+		else if(e.getX()>187&&e.getX()<205&&e.getY()>529&&e.getY()<550) {
+			JFrame frame1 = new JFrame();
+	System.out.println("hello im from the past");
+			JLabel label =	media.loadImageFromWithinProject("shadydude.jpg");
+			frame1.setVisible(true);
+			frame1.add(label);
+		frame1.pack();	}
+		
+else if(e.getX()>310&&e.getX()<354&&e.getY()>398&&e.getY()<396) {
+			
+		}
+		// TODO Auto-generated catch block
+
+		System.out.println(e.getX());
+		System.out.println(e.getY());
+			System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
+		}
+			
+	
+		
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {
