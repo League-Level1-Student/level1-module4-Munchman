@@ -3,7 +3,6 @@
  *    Level 1
  */
 
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -23,14 +22,17 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	MediaPalace media = new MediaPalace();
 	JFrame frame = new JFrame("The Magic Box contains many secrets...");
 	/*
-	 * Work together as a TEAM of 2 or 3 to make this project. We are going to hide secrets within the magic box. 
-	 * When the user clicks on a secret place, stuff will happen.
+	 * Work together as a TEAM of 2 or 3 to make this project. We are going to hide
+	 * secrets within the magic box. When the user clicks on a secret place, stuff
+	 * will happen.
 	 * 
 	 * 1. Make the frame respond to mouse clicks.
-
-	 * 2. When the mouse is clicked, use the Media Palace (bit.ly/media-palace) to play sounds, show images or speak.
 	 * 
-	 * 3. backgroundImage.getRGB(keyEvent.getX(), keyEvent.getY()) will give you the color of the current pixel.
+	 * 2. When the mouse is clicked, use the Media Palace (bit.ly/media-palace) to
+	 * play sounds, show images or speak.
+	 * 
+	 * 3. backgroundImage.getRGB(keyEvent.getX(), keyEvent.getY()) will give you the
+	 * color of the current pixel.
 	 */
 
 	BufferedImage backgroundImage;
@@ -38,9 +40,6 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
 
-	
-		
-		
 	}
 
 	@Override
@@ -51,19 +50,18 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		} catch (Exception w) {
 			System.err.println(w.getMessage());
 		}
-	
-	
+
 	}
 
 	private void createUI() {
-		
+
 		frame.add(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.addMouseListener(this);
-		
+
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -83,56 +81,52 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX()>43&&e.getX()<102&&e.getY()>74&&e.getY()<118) {
+		if (e.getX() > 43 && e.getX() < 102 && e.getY() > 74 && e.getY() < 118) {
 			media.speak("did you just click me?");
 		}
-		
-		else if(e.getX()>187&&e.getX()<205&&e.getY()>529&&e.getY()<550) {
+
+		else if (e.getX() > 187 && e.getX() < 205 && e.getY() > 529 && e.getY() < 550) {
 			JFrame frame1 = new JFrame();
-	System.out.println("hello im from the past");
-			JLabel label =	media.loadImageFromWithinProject("shadydude.jpg");
+			System.out.println("hello im from the past");
+			JLabel label = media.loadImageFromWithinProject("shadydude.jpg");
 			frame1.setVisible(true);
 			frame1.add(label);
-		frame1.pack();	}
-		
-else if(e.getX()>310&&e.getX()<354&&e.getY()>398&&e.getY()<396) {
-			
+			frame1.pack();
+		}
+
+		else if (e.getX() > 169 && e.getX() < 196 && e.getY() > 844 && e.getY() < 847) {
+			System.out.println("im here");
+			media.playMusicOnComputer("Nyan Cat [original].mp3");
 		}
 		// TODO Auto-generated catch block
 
 		System.out.println(e.getX());
 		System.out.println(e.getY());
-			System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
-		}
-			
-	
-		
-	
+		System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
+	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
-
-
